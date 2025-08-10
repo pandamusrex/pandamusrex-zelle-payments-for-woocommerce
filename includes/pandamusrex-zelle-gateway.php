@@ -60,7 +60,7 @@ function pandamusrex_zelle_plugins_loaded() {
             );
         }
 
-        public function generate_qrcodepicker_html() {
+        public function generate_qrcodepicker_html( $key, $data ) {
             $field    = $this->plugin_id . $this->id . '_' . $key;
             $defaults = array(
                 'class'             => 'button-secondary',
