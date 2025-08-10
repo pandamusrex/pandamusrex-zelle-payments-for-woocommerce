@@ -29,10 +29,6 @@ function pandamusrex_zelle_plugins_loaded() {
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
         }
 
-        public function process_admin_options() {
-            // GNDN
-        }
-
         public function init_form_fields() {
             $this->form_fields = array(
                 'enabled' => array(
