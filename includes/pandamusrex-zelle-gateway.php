@@ -12,6 +12,7 @@ function pandamusrex_zelle_plugins_loaded() {
     class PandamusRex_Zelle_for_WooCommerce_Gateway extends WC_Payment_Gateway {
         public function __construct() {
             $this->id = 'pandamusrex_zelle';
+            $this->icon = plugins_url( '../img/zelle.png', __FILE__ );
             $this->method_title = __( 'Zelle' );
             $this->method_description = __( 'Accept offline payments with Zelle' );
 
