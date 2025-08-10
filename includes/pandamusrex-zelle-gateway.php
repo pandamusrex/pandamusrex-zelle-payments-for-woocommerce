@@ -50,8 +50,34 @@ function pandamusrex_zelle_plugins_loaded() {
                     'title' => __( 'Customer Message', 'woocommerce' ),
                     'type' => 'textarea',
                     'default' => ''
+                ),
+                'qr_code' => array(
+                    'title' => __( 'QR Code', 'woocommerce' ),
+                    'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
+                    'type' => 'qrcodepicker',
+                    'default' => ''
                 )
             );
+        }
+
+        public function generate_qrcodepicker_html() {
+            ob_start();
+            ?>
+            <tr valign="top">
+                <th scope="row" class="titledesc">
+                    <label for="<?php echo esc_attr( $field ); ?>"><?php echo wp_kses_post( $data['title'] ); ?></label>
+                    <?php echo $this->get_tooltip_html( $data ); ?>
+                </th>
+                <td class="forminp">
+                    <fieldset>
+                        <legend class="screen-reader-text"><span><?php echo wp_kses_post( $data['title'] ); ?></span></legend>
+                        <button class="<?php echo esc_attr( $data['class'] ); ?>" type="button" name="<?php echo esc_attr( $field ); ?>" id="<?php echo esc_attr( $field ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>" <?php echo $this->get_custom_attribute_html( $data ); ?>><?php echo wp_kses_post( $data['title'] ); ?></button>
+                        <?php echo $this->get_description_html( $data ); ?>
+                    </fieldset>
+                </td>
+            </tr>
+            <?php
+            return ob_get_clean();
         }
 
         public function process_payment( $order_id ) {
