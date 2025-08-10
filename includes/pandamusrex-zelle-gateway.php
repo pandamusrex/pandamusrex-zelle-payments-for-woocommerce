@@ -61,6 +61,17 @@ function pandamusrex_zelle_plugins_loaded() {
         }
 
         public function generate_qrcodepicker_html() {
+            $field    = $this->plugin_id . $this->id . '_' . $key;
+            $defaults = array(
+                'class'             => 'button-secondary',
+                'css'               => '',
+                'custom_attributes' => array(),
+                'desc_tip'          => false,
+                'description'       => '',
+                'title'             => '',
+            );
+
+            $data = wp_parse_args( $data, $defaults );
             ob_start();
             ?>
             <tr valign="top">
