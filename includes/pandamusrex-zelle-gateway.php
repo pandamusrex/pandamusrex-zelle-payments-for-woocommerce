@@ -69,7 +69,7 @@ function pandamusrex_zelle_plugins_loaded() {
                     'default' => ''
                 ),
                 'qr_code' => array(
-                    'title' => __( 'QR Code', 'woocommerce' ),
+                    'title' => __( 'Select QR Code', 'woocommerce' ),
                     'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
                     'type' => 'qr_code_url',
                     'default' => ''
@@ -99,8 +99,23 @@ function pandamusrex_zelle_plugins_loaded() {
                 <td class="forminp">
                     <fieldset>
                         <legend class="screen-reader-text"><span><?php echo wp_kses_post( $data['title'] ); ?></span></legend>
-                        <button class="<?php echo esc_attr( $data['class'] ); ?>" type="button" name="<?php echo esc_attr( $field ); ?>" id="<?php echo esc_attr( $field ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>" <?php echo $this->get_custom_attribute_html( $data ); ?>><?php echo wp_kses_post( $data['title'] ); ?></button>
-                        <input id="qr_code_url" type="text" size="36" name="qr_code_url" value="<?php echo $this->qr_code_url; ?>" />
+                        <button
+                            class="<?php echo esc_attr( $data['class'] ); ?>"
+                            type="button"
+                            name="<?php echo esc_attr( $field ); ?>"
+                            id="pandamusrex_zelle_qr_code_upload_button"
+                            style="<?php echo esc_attr( $data['css'] ); ?>"
+                            <?php echo $this->get_custom_attribute_html( $data ); ?>
+                        >
+                            <?php echo wp_kses_post( $data['title'] ); ?>
+                        </button>
+                        <input
+                            id="pandamusrex_zelle_qr_code_upload_text"
+                            type="text"
+                            size="36"
+                            name="qr_code_url"
+                            value="<?php echo $this->qr_code_url; ?>"
+                        />
                         <?php echo $this->get_description_html( $data ); ?>
                     </fieldset>
                 </td>
