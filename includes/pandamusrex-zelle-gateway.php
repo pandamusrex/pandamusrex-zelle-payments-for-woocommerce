@@ -50,6 +50,9 @@ class PandamusRex_Zelle_for_WooCommerce_Gateway extends WC_Payment_Gateway {
         // Mark as on-hold (we're awaiting the Zelle)
         $order->update_status('on-hold', __( 'Awaiting Zelle payment', 'woocommerce' ));
 
+        // Reduce stock levels
+        $order->reduce_order_stock();
+
         // Remove cart
         $woocommerce->cart->empty_cart();
 
