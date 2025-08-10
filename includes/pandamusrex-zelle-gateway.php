@@ -54,13 +54,13 @@ function pandamusrex_zelle_plugins_loaded() {
                 'qr_code' => array(
                     'title' => __( 'QR Code', 'woocommerce' ),
                     'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
-                    'type' => 'qrcodepicker',
+                    'type' => 'qr_code_url_text',
                     'default' => ''
                 )
             );
         }
 
-        public function generate_qrcodepicker_html( $key, $data ) {
+        public function generate_qr_code_url_text_html( $key, $data ) {
             $field    = $this->plugin_id . $this->id . '_' . $key;
             $defaults = array(
                 'class'             => 'button-secondary',
