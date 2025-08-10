@@ -24,6 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once( plugin_dir_path(__FILE__) . 'includes/pandamusrex-zelle-gateway.php' );
+
 class PandamusRex_Zelle_for_WooCommerce {
     private static $instance;
 
@@ -39,16 +41,7 @@ class PandamusRex_Zelle_for_WooCommerce {
     public function __wakeup() {}
 
     public function __construct() {
-        add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
         add_filter( 'woocommerce_payment_gateways', [ $this, 'woocommerce_payment_gateways' ] );
-    }
-
-    public function plugins_loaded() {
-        if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
-            return;
-        }
-
-        require_once( plugin_dir_path(__FILE__) . 'includes/pandamusrex-zelle-gateway.php' );
     }
 
     public function woocommerce_payment_gateways( $methods ) {
