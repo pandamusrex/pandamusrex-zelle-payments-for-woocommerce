@@ -22,7 +22,6 @@ function pandamusrex_zelle_plugins_loaded() {
             $this->init_form_fields();
             $this->init_settings();
 
-            $this->enabled = $this->get_option( 'enabled' );
             $this->title = $this->get_option( 'title' );
             $this->description = $this->get_option( 'description' );
 
