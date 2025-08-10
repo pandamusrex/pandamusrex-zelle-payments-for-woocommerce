@@ -25,10 +25,27 @@ function pandamusrex_zelle_plugins_loaded() {
 
             $this->title = $this->get_option( 'title' );
             $this->description = $this->get_option( 'description' );
+            $this->qr_code_url = $this->get_option( 'qr_code_url' );
 
-            add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-            add_filter( 'woocommerce_gateway_icon', array( $this, 'woocommerce_gateway_icon' ), 10, 2 );
-            add_filter( 'woocommerce_gateway_description', array( $this, 'woocommerce_gateway_description' ), 10, 2 );
+            add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
+            add_filter( 'woocommerce_gateway_icon', [ $this, 'woocommerce_gateway_icon' ], 10, 2 );
+            add_filter( 'woocommerce_gateway_description', [ $this, 'woocommerce_gateway_description' ], 10, 2 );
+
+            add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+        }
+
+        public function admin_enqueue_scripts() {
+            wp_register_script(
+                'pandamusrex_zelle_payment_gateway_admin',
+                plugins_url( '../scripts/admin.js', __FILE__ ),
+                [ 'jquery-core' ],
+                [],
+                true
+            );
+
+            if ( is_admin() ) {
+                wp_enqueue_script( 'pandamusrex_zelle_payment_gateway_admin' );
+            }
         }
 
         public function init_form_fields() {
@@ -54,13 +71,13 @@ function pandamusrex_zelle_plugins_loaded() {
                 'qr_code' => array(
                     'title' => __( 'QR Code', 'woocommerce' ),
                     'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
-                    'type' => 'qr_code_url_text',
+                    'type' => 'qr_code_url',
                     'default' => ''
                 )
             );
         }
 
-        public function generate_qr_code_url_text_html( $key, $data ) {
+        public function generate_qr_code_url_html( $key, $data ) {
             $field    = $this->plugin_id . $this->id . '_' . $key;
             $defaults = array(
                 'class'             => 'button-secondary',
@@ -83,6 +100,7 @@ function pandamusrex_zelle_plugins_loaded() {
                     <fieldset>
                         <legend class="screen-reader-text"><span><?php echo wp_kses_post( $data['title'] ); ?></span></legend>
                         <button class="<?php echo esc_attr( $data['class'] ); ?>" type="button" name="<?php echo esc_attr( $field ); ?>" id="<?php echo esc_attr( $field ); ?>" style="<?php echo esc_attr( $data['css'] ); ?>" <?php echo $this->get_custom_attribute_html( $data ); ?>><?php echo wp_kses_post( $data['title'] ); ?></button>
+                        <input id="qr_code_url" type="text" size="36" name="qr_code_url" value="<?php echo $this->qr_code_url; ?>" />
                         <?php echo $this->get_description_html( $data ); ?>
                     </fieldset>
                 </td>
