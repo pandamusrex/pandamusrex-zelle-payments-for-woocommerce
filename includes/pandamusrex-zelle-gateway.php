@@ -10,6 +10,10 @@ class PandamusRex_Zelle_for_WooCommerce_Gateway extends WC_Payment_Gateway {
         $this->method_title = __( 'Zelle' );
         $this->method_description = __( 'Accept offline payments with Zelle' );
 
+        $this->supports = array(
+            'products'
+        );
+
         $this->init_form_fields();
         $this->init_settings();
 
