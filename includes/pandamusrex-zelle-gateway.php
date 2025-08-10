@@ -26,6 +26,7 @@ function pandamusrex_zelle_plugins_loaded() {
             $this->description = $this->get_option( 'description' );
 
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
+            add_filter( 'woocommerce_gateway_icon', array( $this, 'custom_gateway_icon' ), 10, 2 );
         }
 
         public function init_form_fields() {
@@ -69,6 +70,14 @@ function pandamusrex_zelle_plugins_loaded() {
                 'result' => 'success',
                 'redirect' => $this->get_return_url( $order )
             );
+        }
+
+        function custom_gateway_icon( $icon, $gateway_id ) {
+            if ( $gateway_id === $this->id ) {
+                return '<img src="' . plugins_url( 'img/zelle.png', __FILE__ ) . '" > ';
+            } else {
+                return $icon;
+            }
         }
     }
 }
