@@ -27,7 +27,8 @@ function pandamusrex_zelle_plugins_loaded() {
             $this->description = $this->get_option( 'description' );
 
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-            add_filter( 'woocommerce_gateway_icon', array( $this, 'custom_gateway_icon' ), 10, 2 );
+            add_filter( 'woocommerce_gateway_icon', array( $this, 'woocommerce_gateway_icon' ), 10, 2 );
+            add_filter( 'woocommerce_gateway_description', array( $this, 'woocommerce_gateway_description' ), 10, 2 );
         }
 
         public function init_form_fields() {
@@ -73,12 +74,22 @@ function pandamusrex_zelle_plugins_loaded() {
             );
         }
 
-        function custom_gateway_icon( $icon, $gateway_id ) {
+        function woocommerce_gateway_icon( $icon, $gateway_id ) {
             if ( $gateway_id === $this->id ) {
                 return '<img src="' . plugins_url( '../img/zelle.png', __FILE__ ) . '" > ';
             } else {
                 return $icon;
             }
+        }
+
+        function woocommerce_gateway_description( $description, $gateway_id ) {
+            $html_to_be_added = '';
+
+            if ( $gateway_id === $this->id) {
+                $html_to_be_added = '<br/><h1>ZELLE QR GOES HERE</h1>';
+            }
+
+            return $description . $html_to_be_added;
         }
     }
 }
