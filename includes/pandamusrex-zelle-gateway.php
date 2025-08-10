@@ -74,7 +74,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
         function custom_gateway_icon( $icon, $gateway_id ) {
             if ( $gateway_id === $this->id ) {
-                return '<img src="' . plugins_url( 'img/zelle.png', __FILE__ ) . '" > ';
+                return '<img src="' . plugins_url( '../img/zelle.png', __FILE__ ) . '" > ';
             } else {
                 return $icon;
             }
