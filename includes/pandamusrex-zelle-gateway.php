@@ -44,6 +44,7 @@ function pandamusrex_zelle_plugins_loaded() {
             );
 
             if ( is_admin() ) {
+                wp_enqueue_media();
                 wp_enqueue_script( 'pandamusrex_zelle_payment_gateway_admin' );
             }
         }
@@ -79,6 +80,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
         public function generate_qr_code_url_html( $key, $data ) {
             $field    = $this->plugin_id . $this->id . '_' . $key;
+
             $defaults = array(
                 'class'             => 'button-secondary',
                 'css'               => '',
@@ -87,8 +89,8 @@ function pandamusrex_zelle_plugins_loaded() {
                 'description'       => '',
                 'title'             => '',
             );
-
             $data = wp_parse_args( $data, $defaults );
+
             ob_start();
             ?>
             <tr valign="top">
