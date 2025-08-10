@@ -10,6 +10,9 @@ function pandamusrex_zelle_plugins_loaded() {
     }
 
     class PandamusRex_Zelle_for_WooCommerce_Gateway extends WC_Payment_Gateway {
+
+        protected $qr_code_url;
+
         public function __construct() {
             $this->id = 'pandamusrex_zelle';
             $this->icon = plugins_url( '../img/zelle.png', __FILE__ );
