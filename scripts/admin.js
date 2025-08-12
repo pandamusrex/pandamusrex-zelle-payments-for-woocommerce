@@ -7,12 +7,12 @@ jQuery( document ).ready( function( $ ){
     if ( $( '#pandamusrex_zelle_qr_code_img_id' ).val() ) {
         console.log( 'falsy val' );
         $( '#pandamusrex_zelle_qr_code_remove' ).show();
-        $( 'pandamusrex_zelle_qr_code_image' ).show();
+        $( '#pandamusrex_zelle_qr_code_image' ).show();
         $( '#pandamusrex_zelle_qr_code_upload_button' ).hide();
     } else {
         console.log( 'truthy val' );
         $( '#pandamusrex_zelle_qr_code_remove' ).hide();
-        $( 'pandamusrex_zelle_qr_code_image' ).hide();
+        $( '#pandamusrex_zelle_qr_code_image' ).hide();
         $( '#pandamusrex_zelle_qr_code_upload_button' ).show();
     }
 
