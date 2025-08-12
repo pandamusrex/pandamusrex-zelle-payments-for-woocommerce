@@ -166,6 +166,10 @@ function pandamusrex_zelle_plugins_loaded() {
             return $settings;
         }
 
+        public function validate_qr_code_img_id_field( $key, $value ) {
+            return $value;
+        }
+
         public function process_payment( $order_id ) {
             global $woocommerce;
             $order = new WC_Order( $order_id );
