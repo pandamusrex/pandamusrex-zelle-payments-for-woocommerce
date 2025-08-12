@@ -28,7 +28,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
             $this->title = $this->get_option( 'title' );
             $this->description = $this->get_option( 'description' );
-            $this->qr_code_url = $this->get_option( 'qr_code_url' );
+            $this->qr_code_img_id = $this->get_option( 'qr_code_img_id' );
 
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
             add_filter( 'woocommerce_gateway_icon', [ $this, 'woocommerce_gateway_icon' ], 10, 2 );
