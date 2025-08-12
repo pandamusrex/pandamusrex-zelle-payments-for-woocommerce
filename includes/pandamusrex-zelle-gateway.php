@@ -95,6 +95,11 @@ function pandamusrex_zelle_plugins_loaded() {
             );
             $data = wp_parse_args( $data, $defaults );
 
+            $image_url = '';
+            if ( $this->qr_code_img_id ) {
+                $image_url = wp_get_attachment_image_url( $image_id, 'medium' );
+            }
+
             ob_start();
             ?>
             <tr valign="top">
@@ -110,6 +115,12 @@ function pandamusrex_zelle_plugins_loaded() {
                             <span><?php echo wp_kses_post( $data['title'] ); ?></span>
                         </legend>
                         <?php echo $this->get_description_html( $data ); ?>
+                        <a href="#">
+                            <img
+                                id="pandamusrex_zelle_qr_code_image"
+                                src="<?php echo esc_url( $image_url ); ?>"
+                            />
+                        </a>
                         <button
                             class="<?php echo esc_attr( $data['class'] ); ?>"
                             type="button"
@@ -118,7 +129,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             style="<?php echo esc_attr( $data['css'] ); ?>"
                             <?php echo $this->get_custom_attribute_html( $data ); ?>
                         >
-                            <?php echo esc_html( __( 'Select Image', 'woocommerce' ) ); ?>
+                            <?php echo esc_html( __( 'Choose Image', 'woocommerce' ) ); ?>
                         </button>
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
@@ -127,6 +138,9 @@ function pandamusrex_zelle_plugins_loaded() {
                             name="qr_code_img_id"
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
+                        <a href="#" class="pandamusrex_zelle_qr_code_remove">
+                            <?php echo esc_html( __( 'Remove Image', 'woocommerce' ) ); ?>
+                        </a>
                     </fieldset>
                 </td>
             </tr>
