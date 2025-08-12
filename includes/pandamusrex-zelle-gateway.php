@@ -115,13 +115,11 @@ function pandamusrex_zelle_plugins_loaded() {
                             <span><?php echo wp_kses_post( $data['title'] ); ?></span>
                         </legend>
                         <?php echo $this->get_description_html( $data ); ?>
-                        <a href="#">
-                            <img
-                                id="pandamusrex_zelle_qr_code_image"
-                                src="<?php echo esc_url( $image_url ); ?>"
-                                width="200"
-                            />
-                        </a>
+                        <img
+                            id="pandamusrex_zelle_qr_code_image"
+                            src="<?php echo esc_url( $image_url ); ?>"
+                            width="200"
+                        />
                         <button
                             id="pandamusrex_zelle_qr_code_upload_button"
                             class="<?php echo esc_attr( $data['class'] ); ?>"
@@ -139,7 +137,6 @@ function pandamusrex_zelle_plugins_loaded() {
                             name="qr_code_img_id"
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
-                        <br/>
                         <a href="#" id="pandamusrex_zelle_qr_code_remove">
                             <?php echo esc_html( __( 'Remove Image', 'woocommerce' ) ); ?>
                         </a>
