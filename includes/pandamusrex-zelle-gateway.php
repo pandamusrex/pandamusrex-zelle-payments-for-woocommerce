@@ -33,7 +33,7 @@ function pandamusrex_zelle_plugins_loaded() {
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
             add_filter( 'woocommerce_gateway_icon', [ $this, 'woocommerce_gateway_icon' ], 10, 2 );
             add_filter( 'woocommerce_gateway_description', [ $this, 'woocommerce_gateway_description' ], 10, 2 );
-
+            add_filter( 'woocommerce_settings_api_sanitized_fields_' . $this->id, [ $this, 'sanitize_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
         }
 
@@ -145,6 +145,25 @@ function pandamusrex_zelle_plugins_loaded() {
             </tr>
             <?php
             return ob_get_clean();
+        }
+
+        public function sanitize_settings( $settings ) {
+            if ( ! isset( $settings ) ) {
+                return $settings;
+            }
+
+            if ( ! isset( $settings[ 'qr_code_img_id' ] ) ) {
+                return $settings;
+            }
+
+            $qr_code_img_id = absint( trim( $settings[ 'qr_code_img_id' ] ) );
+            if ( $qr_code_img_id === 0 ) {
+                $qr_code_img_id = '';
+            }
+
+            $settings[ 'qr_code_img_id' ] = $qr_code_img_id;
+
+            return $settings;
         }
 
         public function process_payment( $order_id ) {
