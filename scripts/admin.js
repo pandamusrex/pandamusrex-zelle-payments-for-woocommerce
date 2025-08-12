@@ -4,8 +4,8 @@ jQuery( document ).ready( function( $ ){
     var custom_uploader;
 
     // Set initial visibility states based on image value
-    image_id = $( '#pandamusrex_zelle_qr_code_img_id' ).val() ? '';
-    console.log( image_id );
+    image_id = $( '#pandamusrex_zelle_qr_code_img_id' ).val() | '';
+    console.log( 'image_id = ', image_id );
     if ( image_id ) {
         console.log( 'truthy val' );
         $( '#pandamusrex_zelle_qr_code_remove' ).show();
