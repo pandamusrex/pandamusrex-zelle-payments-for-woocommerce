@@ -139,9 +139,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             name="qr_code_img_id"
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
-                        <a href="#" id="pandamusrex_zelle_qr_code_remove">
-                            <?php echo esc_html( __( 'Remove Image', 'woocommerce' ) ); ?>
-                        </a>
+                        <a href="#" id="pandamusrex_zelle_qr_code_remove"><?php echo esc_html( __( 'Remove Image', 'woocommerce' ) ); ?></a>
                     </fieldset>
                 </td>
             </tr>
