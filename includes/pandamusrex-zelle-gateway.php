@@ -97,7 +97,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
             $image_url = '';
             if ( $this->qr_code_img_id ) {
-                $image_url = wp_get_attachment_image_url( $image_id, 'medium' );
+                $image_url = wp_get_attachment_image_url( $this->qr_code_img_id, 'medium' );
             }
 
             ob_start();
