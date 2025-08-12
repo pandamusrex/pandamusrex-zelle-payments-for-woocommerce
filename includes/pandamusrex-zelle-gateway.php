@@ -73,16 +73,17 @@ function pandamusrex_zelle_plugins_loaded() {
                     'default' => ''
                 ),
                 'qr_code_img_id' => array(
-                    'title' => __( 'Select QR Code', 'woocommerce' ),
+                    'title' => __( 'QR Code', 'woocommerce' ),
                     'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
                     'type' => 'qr_code_img_id',
-                    'default' => ''
+                    'default' => '',
+                    'desc_tip' => true,
                 )
             );
         }
 
         public function generate_qr_code_img_id_html( $key, $data ) {
-            $field    = $this->plugin_id . $this->id . '_' . $key;
+            $field = $this->plugin_id . $this->id . '_' . $key;
 
             $defaults = array(
                 'class'             => 'button-secondary',
@@ -98,12 +99,17 @@ function pandamusrex_zelle_plugins_loaded() {
             ?>
             <tr valign="top">
                 <th scope="row" class="titledesc">
-                    <label for="<?php echo esc_attr( $field ); ?>"><?php echo wp_kses_post( $data['title'] ); ?></label>
+                    <label for="<?php echo esc_attr( $field ); ?>">
+                        <?php echo wp_kses_post( $data['title'] ); ?>
+                    </label>
                     <?php echo $this->get_tooltip_html( $data ); ?>
                 </th>
                 <td class="forminp">
                     <fieldset>
-                        <legend class="screen-reader-text"><span><?php echo wp_kses_post( $data['title'] ); ?></span></legend>
+                        <legend class="screen-reader-text">
+                            <span><?php echo wp_kses_post( $data['title'] ); ?></span>
+                        </legend>
+                        <?php echo $this->get_description_html( $data ); ?>
                         <button
                             class="<?php echo esc_attr( $data['class'] ); ?>"
                             type="button"
@@ -116,12 +122,11 @@ function pandamusrex_zelle_plugins_loaded() {
                         </button>
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
-                            type="text"
+                            type="hidden"
                             size="36"
                             name="qr_code_img_id"
-                            value="<?php echo $this->qr_code_img_id; ?>"
+                            value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
-                        <?php echo $this->get_description_html( $data ); ?>
                     </fieldset>
                 </td>
             </tr>
