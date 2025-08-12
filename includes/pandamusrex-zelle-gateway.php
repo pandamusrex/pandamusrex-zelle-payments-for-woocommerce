@@ -124,7 +124,6 @@ function pandamusrex_zelle_plugins_loaded() {
                             id="pandamusrex_zelle_qr_code_upload_button"
                             class="<?php echo esc_attr( $data['class'] ); ?>"
                             type="button"
-                            name="<?php echo esc_attr( $field ); ?>"
                             style="<?php echo esc_attr( $data['css'] ); ?>"
                             <?php echo $this->get_custom_attribute_html( $data ); ?>
                         >
@@ -133,7 +132,7 @@ function pandamusrex_zelle_plugins_loaded() {
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
                             size="36"
-                            name="qr_code_img_id"
+                            name="woocommerce_pandamusrex_zelle_qr_code_img_id"
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
                         <?php echo "<p>>>>>" . $this->qr_code_img_id . "<<<<</p>"; ?>
