@@ -132,7 +132,6 @@ function pandamusrex_zelle_plugins_loaded() {
                         </button>
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
-                            type="hidden"
                             size="36"
                             name="qr_code_img_id"
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
