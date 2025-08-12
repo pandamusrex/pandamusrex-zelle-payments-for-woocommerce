@@ -43,7 +43,7 @@ jQuery( document ).ready( function( $ ){
             $( '#pandamusrex_zelle_qr_code_remove' ).show();
             $( '#pandamusrex_zelle_qr_code_img_id' ).val( attachment.id );
             $( '#pandamusrex_zelle_qr_code_image' ).attr( 'src', attachment.url );
-            $( 'pandamusrex_zelle_qr_code_image' ).show();
+            $( '#pandamusrex_zelle_qr_code_image' ).show();
             $( '#pandamusrex_zelle_qr_code_upload_button' ).hide();
         } );
 
@@ -56,7 +56,7 @@ jQuery( document ).ready( function( $ ){
 
         $( '#pandamusrex_zelle_qr_code_remove' ).hide();
         $( '#pandamusrex_zelle_qr_code_img_id' ).val( '' );
-        $( 'pandamusrex_zelle_qr_code_image' ).hide();
+        $( '#pandamusrex_zelle_qr_code_image' ).hide();
         $( '#pandamusrex_zelle_qr_code_upload_button' ).show();
 	});
 } );
