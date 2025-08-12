@@ -11,7 +11,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
     class PandamusRex_Zelle_for_WooCommerce_Gateway extends WC_Payment_Gateway {
 
-        protected $qr_code_url;
+        protected $qr_code_img_id;
 
         public function __construct() {
             $this->id = 'pandamusrex_zelle';
@@ -72,16 +72,16 @@ function pandamusrex_zelle_plugins_loaded() {
                     'type' => 'textarea',
                     'default' => ''
                 ),
-                'qr_code' => array(
+                'qr_code_img_id' => array(
                     'title' => __( 'Select QR Code', 'woocommerce' ),
                     'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
-                    'type' => 'qr_code_url',
+                    'type' => 'qr_code_img_id',
                     'default' => ''
                 )
             );
         }
 
-        public function generate_qr_code_url_html( $key, $data ) {
+        public function generate_qr_code_img_id_html( $key, $data ) {
             $field    = $this->plugin_id . $this->id . '_' . $key;
 
             $defaults = array(
@@ -115,11 +115,11 @@ function pandamusrex_zelle_plugins_loaded() {
                             <?php echo wp_kses_post( $data['title'] ); ?>
                         </button>
                         <input
-                            id="pandamusrex_zelle_qr_code_upload_text"
+                            id="pandamusrex_zelle_qr_code_img_id"
                             type="text"
                             size="36"
-                            name="qr_code_url"
-                            value="<?php echo $this->qr_code_url; ?>"
+                            name="qr_code_img_id"
+                            value="<?php echo $this->qr_code_img_id; ?>"
                         />
                         <?php echo $this->get_description_html( $data ); ?>
                     </fieldset>
