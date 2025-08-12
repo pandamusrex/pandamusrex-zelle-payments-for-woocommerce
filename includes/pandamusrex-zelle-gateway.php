@@ -118,7 +118,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             style="<?php echo esc_attr( $data['css'] ); ?>"
                             <?php echo $this->get_custom_attribute_html( $data ); ?>
                         >
-                            <?php echo wp_kses_post( $data['title'] ); ?>
+                            <?php echo esc_html( __( 'Select Image', 'woocommerce' ) ); ?>
                         </button>
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
