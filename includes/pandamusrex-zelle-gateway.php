@@ -119,6 +119,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             <img
                                 id="pandamusrex_zelle_qr_code_image"
                                 src="<?php echo esc_url( $image_url ); ?>"
+                                width="200"
                             />
                         </a>
                         <button

@@ -3,6 +3,17 @@ console.log( 'pandamusrex admin.js loaded successfully' );
 jQuery( document ).ready( function( $ ){
     var custom_uploader;
 
+    // Set initial visibility states based on image value
+    if ( $( '#pandamusrex_zelle_qr_code_img_id' ).val() ) {
+        $( '#pandamusrex_zelle_qr_code_remove' ).show();
+        $( 'pandamusrex_zelle_qr_code_image' ).show();
+        $( '#pandamusrex_zelle_qr_code_upload_button' ).hide();
+    } else {
+        $( '#pandamusrex_zelle_qr_code_remove' ).hide();
+        $( 'pandamusrex_zelle_qr_code_image' ).hide();
+        $( '#pandamusrex_zelle_qr_code_upload_button' ).show();
+    }
+
     $( '#pandamusrex_zelle_qr_code_upload_button' ).click( function( e ) {
         e.preventDefault();
 
@@ -36,7 +47,7 @@ jQuery( document ).ready( function( $ ){
         custom_uploader.open();
     } );
 
-    $( 'body' ).on( 'click', '.pandamusrex_zelle_qr_code_remove', function( event ){
+    $( 'body' ).on( 'click', '#pandamusrex_zelle_qr_code_remove', function( event ){
         event.preventDefault();
 
         $( '#pandamusrex_zelle_qr_code_remove' ).hide();
