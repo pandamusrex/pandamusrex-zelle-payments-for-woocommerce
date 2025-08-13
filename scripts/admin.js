@@ -45,7 +45,6 @@ jQuery( document ).ready( function( $ ){
             $( '#pandamusrex_zelle_qr_code_image' ).show();
             $( '#pandamusrex_zelle_qr_code_image' ).attr( 'src', attachment.url );
             $( '#pandamusrex_zelle_qr_code_upload_button' ).hide();
-
             $( '.woocommerce-save-button' ).prop( 'disabled', false );
         } );
 
@@ -60,5 +59,6 @@ jQuery( document ).ready( function( $ ){
         $( '#pandamusrex_zelle_qr_code_img_id' ).val( '' );
         $( '#pandamusrex_zelle_qr_code_image' ).hide();
         $( '#pandamusrex_zelle_qr_code_upload_button' ).show();
+        $( '.woocommerce-save-button' ).prop( 'disabled', false );
 	});
 } );
