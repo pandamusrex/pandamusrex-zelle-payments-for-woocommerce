@@ -212,6 +212,7 @@ function pandamusrex_zelle_plugins_loaded() {
                     $html_to_be_added = '<p>Merchant: Please complete setting up Zelle.</p>';
                 } else {
                     $html_to_be_added = '<img src="' . esc_url( $image_url ) . '" width="300" />';
+                }
             }
 
             return $description . $html_to_be_added;
