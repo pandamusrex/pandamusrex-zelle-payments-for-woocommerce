@@ -203,7 +203,15 @@ function pandamusrex_zelle_plugins_loaded() {
             $html_to_be_added = '';
 
             if ( $gateway_id === $this->id) {
-                $html_to_be_added = '<br/><h1>ZELLE QR GOES HERE</h1>';
+                $image_url = '';
+                if ( $this->qr_code_img_id ) {
+                    $image_url = wp_get_attachment_image_url( $this->qr_code_img_id, 'medium' );
+                }
+
+                if ( empty( $image_url ) ) {
+                    $html_to_be_added = '<p>Merchant: Please complete setting up Zelle.</p>';
+                } else {
+                    $html_to_be_added = '<img src="' . esc_url( $image_url ) . '" width="300" />';
             }
 
             return $description . $html_to_be_added;
