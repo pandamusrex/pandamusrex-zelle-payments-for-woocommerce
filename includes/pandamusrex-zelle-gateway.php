@@ -211,16 +211,22 @@ function pandamusrex_zelle_plugins_loaded() {
             <div id="pandamusrex_zelle_thankyou">
                 <p>
                     <?php
-                    echo esc_html__( "Please use your banking app to scan our Zelle QR code and complete payment.",
+                    echo esc_html__( "Please use your banking app to scan our Zelle QR code below and complete payment.",
                         "pandamusrex-zelle-for-woocommerce" );
+                    echo " <b>";
                     echo esc_html(
                         sprintf(
                             __( "Be sure to mention order number %d in the memo field.", "pandamusrex-zelle-for-woocommerce" ),
                             $order_id
                         )
                     );
+                    echo "</b>"
                     ?>
                 </p>
+                <p>
+                    <img src="<?php echo esc_url( $qr_code_image_url ) ?>" width="300" />
+                </p>
+                ?>
             </div>
             <?php
 
