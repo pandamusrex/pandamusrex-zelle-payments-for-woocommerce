@@ -32,7 +32,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
             add_filter( 'woocommerce_gateway_icon', [ $this, 'woocommerce_gateway_icon' ], 10, 2 );
-            add_filter( 'woocommerce_thankyou', [ $this, 'woocommerce_thankyou' ], 10, 2 );
+            add_action( 'woocommerce_thankyou', [ $this, 'woocommerce_thankyou' ], 10 );
             add_filter( 'woocommerce_settings_api_sanitized_fields_' . $this->id, [ $this, 'sanitize_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
         }
@@ -176,7 +176,7 @@ function pandamusrex_zelle_plugins_loaded() {
             $order->update_status('on-hold', __( 'Awaiting Zelle payment', 'pandamusrex-zelle-for-woocommerce' ));
 
             // Reduce stock levels
-            $order->reduce_order_stock();
+            wc_reduce_stock_levels( $order );
 
             // Remove cart
             $woocommerce->cart->empty_cart();
