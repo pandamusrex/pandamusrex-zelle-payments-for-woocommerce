@@ -32,7 +32,7 @@ function pandamusrex_zelle_plugins_loaded() {
 
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, [ $this, 'process_admin_options' ] );
             add_filter( 'woocommerce_gateway_icon', [ $this, 'woocommerce_gateway_icon' ], 10, 2 );
-            add_filter( 'woocommerce_gateway_description', [ $this, 'woocommerce_gateway_description' ], 10, 2 );
+            add_filter( 'woocommerce_thankyou', [ $this, 'woocommerce_thankyou' ], 10, 2 );
             add_filter( 'woocommerce_settings_api_sanitized_fields_' . $this->id, [ $this, 'sanitize_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
         }
@@ -196,23 +196,35 @@ function pandamusrex_zelle_plugins_loaded() {
             }
         }
 
-        function woocommerce_gateway_description( $description, $gateway_id ) {
-            $html_to_be_added = '';
-
-            if ( $gateway_id === $this->id) {
-                $image_url = '';
-                if ( $this->qr_code_img_id ) {
-                    $image_url = wp_get_attachment_image_url( $this->qr_code_img_id, 'medium' );
-                }
-
-                if ( empty( $image_url ) ) {
-                    $html_to_be_added = '<p>Merchant: Please complete setting up Zelle.</p>';
-                } else {
-                    $html_to_be_added = '<p><img src="' . esc_url( $image_url ) . '" width="300" /></p>';
-                }
+        function woocommerce_thankyou( $order_id ) {
+            $qr_code_image_url = '';
+            if ( $this->qr_code_img_id ) {
+                $qr_code_image_url = wp_get_attachment_image_url( $this->qr_code_img_id, 'medium' );
             }
 
-            return $description . $html_to_be_added;
+            if ( empty( $qr_code_image_url ) ) {
+                return;
+            }
+
+            ob_start();
+            ?>
+            <div id="pandamusrex_zelle_thankyou">
+                <p>
+                    <?php
+                    echo esc_html__( "Please use your banking app to scan our Zelle QR code and complete payment.",
+                        "pandamusrex-zelle-for-woocommerce" );
+                    echo esc_html(
+                        sprintf(
+                            __( "Be sure to mention order number %d in the memo field.", "pandamusrex-zelle-for-woocommerce" ),
+                            $order_id
+                        )
+                    );
+                    ?>
+                </p>
+            </div>
+            <?php
+
+            echo ob_get_clean();
         }
     }
 }
