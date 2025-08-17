@@ -216,7 +216,7 @@ function pandamusrex_zelle_plugins_loaded() {
                     echo " <b>";
                     echo esc_html(
                         sprintf(
-                            __( "Be sure to mention order number %d in the memo field.", "pandamusrex-zelle-for-woocommerce" ),
+                            __( "Be sure to mention order number %d in the memo field for faster processing.", "pandamusrex-zelle-for-woocommerce" ),
                             $order_id
                         )
                     );
@@ -226,7 +226,6 @@ function pandamusrex_zelle_plugins_loaded() {
                 <p>
                     <img src="<?php echo esc_url( $qr_code_image_url ) ?>" width="300" />
                 </p>
-                ?>
             </div>
             <?php
 
