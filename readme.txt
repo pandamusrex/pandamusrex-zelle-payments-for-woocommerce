@@ -4,7 +4,7 @@ Donate link: https://pandamusrex.com/
 Tags: woocommerce
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 Requires PHP: 7.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,6 +22,9 @@ Accept WooCommerce offline payments through Zelle.
 Yes. When the administrator receives notification of the Zelle payment they need to manually promote the associated order in WooCommerce.
 
 == Changelog ==
+
+= 1.6.0 =
+* Move QR code display to after customer has placed order
 
 = 1.5.0 =
 * Rename plugin

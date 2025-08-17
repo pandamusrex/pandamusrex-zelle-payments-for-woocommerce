@@ -70,10 +70,7 @@ function pandamusrex_zelle_plugins_loaded() {
                 'description' => array(
                     'title' => __( 'Customer Message', 'pandamusrex-zelle-for-woocommerce' ),
                     'type' => 'textarea',
-                    'default' => '1. Scan the QR code with your mobile device banking app.\r\n' .
-                        '2. Hit Place Order on this page to place your order.\r\n' .
-                        '3. Enter the total amount due into your banking app and send it to us.\r\n' .
-                        '4. We will complete your order as soon as Zelle sends us the funds.'
+                    'default' => __( "After you place your order, we'll provide you our Zelle QR code to complete payment.", 'pandamusrex-zelle-for-woocommerce' )
                 ),
                 'qr_code_img_id' => array(
                     'title' => __( 'QR Code', 'pandamusrex-zelle-for-woocommerce' ),

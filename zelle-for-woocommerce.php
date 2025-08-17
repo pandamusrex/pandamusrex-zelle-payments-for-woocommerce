@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: PandamusRex Zelle Payments for WooCommerce
- * Version: 1.5.0
+ * Version: 1.6.0
  * Plugin URI: https://github.com/pandamusrex/pandamusrex-zelle-payments-for-woocommerce
  * Description: Accept WooCommerce offline payments through Zelle.
  * Author: PandamusRex
