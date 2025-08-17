@@ -16,8 +16,8 @@ function pandamusrex_zelle_plugins_loaded() {
         public function __construct() {
             $this->id = 'pandamusrex_zelle';
             $this->icon = plugins_url( '../img/zelle.png', __FILE__ );
-            $this->method_title = __( 'Zelle' );
-            $this->method_description = __( 'Accept offline payments with Zelle' );
+            $this->method_title = __( 'Zelle', 'pandamusrex-zelle-for-woocommerce' );
+            $this->method_description = __( 'Accept offline payments with Zelle', 'pandamusrex-zelle-for-woocommerce' );
 
             $this->supports = array(
                 'products'
@@ -55,20 +55,20 @@ function pandamusrex_zelle_plugins_loaded() {
         public function init_form_fields() {
             $this->form_fields = array(
                 'enabled' => array(
-                    'title' => __( 'Enable/Disable', 'woocommerce' ),
+                    'title' => __( 'Enable/Disable', 'pandamusrex-zelle-for-woocommerce' ),
                     'type' => 'checkbox',
-                    'label' => __( 'Enable Zelle Payments', 'woocommerce' ),
+                    'label' => __( 'Enable Zelle Payments', 'pandamusrex-zelle-for-woocommerce' ),
                     'default' => 'yes'
                 ),
                 'title' => array(
-                    'title' => __( 'Title', 'woocommerce' ),
+                    'title' => __( 'Title', 'pandamusrex-zelle-for-woocommerce' ),
                     'type' => 'text',
                     'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce' ),
-                    'default' => __( 'Zelle', 'woocommerce' ),
+                    'default' => __( 'Zelle', 'pandamusrex-zelle-for-woocommerce' ),
                     'desc_tip' => true,
                 ),
                 'description' => array(
-                    'title' => __( 'Customer Message', 'woocommerce' ),
+                    'title' => __( 'Customer Message', 'pandamusrex-zelle-for-woocommerce' ),
                     'type' => 'textarea',
                     'default' => '1. Scan the QR code with your mobile device banking app.\r\n' .
                         '2. Hit Place Order on this page to place your order.\r\n' .
@@ -76,8 +76,8 @@ function pandamusrex_zelle_plugins_loaded() {
                         '4. We will complete your order as soon as Zelle sends us the funds.'
                 ),
                 'qr_code_img_id' => array(
-                    'title' => __( 'QR Code', 'woocommerce' ),
-                    'description' => __( 'Select the QR code the user will see during checkout.', 'woocommerce' ),
+                    'title' => __( 'QR Code', 'pandamusrex-zelle-for-woocommerce' ),
+                    'description' => __( 'Select the QR code the user will see during checkout.', 'pandamusrex-zelle-for-woocommerce' ),
                     'type' => 'qr_code_img_id',
                     'default' => '',
                     'desc_tip' => true,
@@ -130,7 +130,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             style="<?php echo esc_attr( $data['css'] ); ?>"
                             <?php echo $this->get_custom_attribute_html( $data ); ?>
                         >
-                            <?php echo esc_html( __( 'Choose Image', 'woocommerce' ) ); ?>
+                            <?php echo esc_html( __( 'Choose Image', 'pandamusrex-zelle-for-woocommerce' ) ); ?>
                         </button>
                         <input
                             id="pandamusrex_zelle_qr_code_img_id"
@@ -139,7 +139,7 @@ function pandamusrex_zelle_plugins_loaded() {
                             value="<?php echo esc_attr( absint( $this->qr_code_img_id ) ); ?>"
                         />
                         <a href="#" id="pandamusrex_zelle_qr_code_remove">
-                            <?php echo esc_html( __( 'Remove Image', 'woocommerce' ) ); ?>
+                            <?php echo esc_html( __( 'Remove Image', 'pandamusrex-zelle-for-woocommerce' ) ); ?>
                         </a>
                     </fieldset>
                 </td>
@@ -176,7 +176,7 @@ function pandamusrex_zelle_plugins_loaded() {
             $order = new WC_Order( $order_id );
 
             // Mark as on-hold (we're awaiting the Zelle)
-            $order->update_status('on-hold', __( 'Awaiting Zelle payment', 'woocommerce' ));
+            $order->update_status('on-hold', __( 'Awaiting Zelle payment', 'pandamusrex-zelle-for-woocommerce' ));
 
             // Reduce stock levels
             $order->reduce_order_stock();

@@ -1,18 +1,19 @@
 <?php
 
 /**
- * Plugin Name: Zelle for WooCommerce
- * Version: 1.0.0
- * Plugin URI: https://github.com/pandamusrex/zelle-for-woocommerce
+ * Plugin Name: PandamusRex Zelle Payments for WooCommerce
+ * Version: 1.5.0
+ * Plugin URI: https://github.com/pandamusrex/pandamusrex-zelle-payments-for-woocommerce
  * Description: Accept WooCommerce offline payments through Zelle.
  * Author: PandamusRex
  * Author URI: https://www.github.com/pandamusrex/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 6.4
+ * Requires PHP: 7.0
  * Tested up to: 6.8
  *
- * Text Domain: zelle-for-woocommerce
+ * Text Domain: pandamusrex-zelle-for-woocommerce
  * Domain Path: /lang/
  *
  * @package WordPress
