@@ -35,7 +35,6 @@ function pandamusrex_zelle_plugins_loaded() {
             add_action( 'woocommerce_thankyou', [ $this, 'woocommerce_thankyou' ], 10 );
             add_filter( 'woocommerce_settings_api_sanitized_fields_' . $this->id, [ $this, 'sanitize_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
-            add_filter( 'plugin_action_links_pandamusrex-zelle-payments-for-woocommerce', [ $this, 'plugin_action_links' ] );
         }
 
         public function admin_enqueue_scripts() {
@@ -231,14 +230,6 @@ function pandamusrex_zelle_plugins_loaded() {
             <?php
 
             echo ob_get_clean();
-        }
-
-        public function plugin_action_links ( $actions ) {
-            $links = array(
-                '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=pandamusrex_zelle' ) . '">' . esc_html__( 'Settings', '' ) . '</a>',
-            );
-            $actions = array_merge( $actions, $links );
-            return $actions;
         }
     }
 }
