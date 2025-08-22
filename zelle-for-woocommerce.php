@@ -43,7 +43,7 @@ class PandamusRex_Zelle_for_WooCommerce {
 
     public function __construct() {
         add_filter( 'woocommerce_payment_gateways', [ $this, 'woocommerce_payment_gateways' ] );
-        add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), [ $this, 'plugin_action_links' ] );
+        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [ $this, 'plugin_action_links' ] );
     }
 
     public function woocommerce_payment_gateways( $methods ) {
@@ -51,7 +51,7 @@ class PandamusRex_Zelle_for_WooCommerce {
         return $methods;
     }
 
-    public function plugin_action_links ( $actions ) {
+    public function plugin_action_links( $actions ) {
         $links = array(
             '<a href="' .
                 admin_url( 'admin.php?page=wc-settings&tab=checkout&section=pandamusrex_zelle' ) .
