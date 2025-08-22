@@ -52,14 +52,15 @@ class PandamusRex_Zelle_for_WooCommerce {
     }
 
     public function plugin_action_links( $actions ) {
-        $links = array(
+        $settings_link = array(
             '<a href="' .
                 admin_url( 'admin.php?page=wc-settings&tab=checkout&section=pandamusrex_zelle' ) .
                 '">' .
                 esc_html__( 'Settings', 'pandamusrex-zelle-for-woocommerce' ) .
                 '</a>',
         );
-        $actions = array_merge( $actions, $links );
+
+        $actions = array_merge( $settings_link, $actions );
         return $actions;
     }
 }
