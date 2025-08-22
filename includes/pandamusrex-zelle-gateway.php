@@ -35,6 +35,7 @@ function pandamusrex_zelle_plugins_loaded() {
             add_action( 'woocommerce_thankyou', [ $this, 'woocommerce_thankyou' ], 10 );
             add_filter( 'woocommerce_settings_api_sanitized_fields_' . $this->id, [ $this, 'sanitize_settings' ] );
             add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+            add_filter( 'plugin_action_links_pandamusrex-zelle-payments-for-woocommerce', [ $this, 'plugin_action_links' ] );
         }
 
         public function admin_enqueue_scripts() {
@@ -188,7 +189,7 @@ function pandamusrex_zelle_plugins_loaded() {
             );
         }
 
-        function woocommerce_gateway_icon( $icon, $gateway_id ) {
+        public function woocommerce_gateway_icon( $icon, $gateway_id ) {
             if ( $gateway_id === $this->id ) {
                 return '<img src="' . plugins_url( '../img/zelle.png', __FILE__ ) . '" > ';
             } else {
@@ -196,7 +197,7 @@ function pandamusrex_zelle_plugins_loaded() {
             }
         }
 
-        function woocommerce_thankyou( $order_id ) {
+        public function woocommerce_thankyou( $order_id ) {
             $qr_code_image_url = '';
             if ( $this->qr_code_img_id ) {
                 $qr_code_image_url = wp_get_attachment_image_url( $this->qr_code_img_id, 'medium' );
@@ -230,6 +231,14 @@ function pandamusrex_zelle_plugins_loaded() {
             <?php
 
             echo ob_get_clean();
+        }
+
+        public function plugin_action_links ( $actions ) {
+            $links = array(
+                '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=pandamusrex_zelle' ) . '">' . esc_html__( 'Settings', '' ) . '</a>',
+            );
+            $actions = array_merge( $actions, $links );
+            return $actions;
         }
     }
 }
